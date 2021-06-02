@@ -20,6 +20,3 @@ Route::get('/', function () {
 
 
 Route::resource('projects', ProjectController::class);
-
-// Route::resource('projects', 'ProjectController');
-
