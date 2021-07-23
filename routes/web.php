@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Mail\Prueba;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::resource('projects', ProjectController::class);
+
+Route::get('/sendmail',[ProjectController::class, 'sendmail']);

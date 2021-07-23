@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Mail\Prueba;
+use Illuminate\Support\Facades\Mail;
 
 class ProjectController extends Controller
 {
+    public function sendmail(Request $request){
+        $correo = new Prueba;
+        Mail::to('receiver@gmail.com')->send($correo);
+        return "Message sent";
+    }
+
     /*
     |--------------------------------------------------------------------------
     | LIST
