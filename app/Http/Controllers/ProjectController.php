@@ -9,13 +9,13 @@ class ProjectController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | LIST
+    | LIST - JSON RESPONSE
     |--------------------------------------------------------------------------
     */
     public function index()
     {
         $projects = Project::get();
-        return view('projects.index', compact('projects'));
+        return response()->json(['projects'=>$projects], 200);
     }
 
     /*
