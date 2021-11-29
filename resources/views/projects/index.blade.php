@@ -19,8 +19,9 @@
       <thead>
         <tr>
           <th class="text-center">ID</th>
-          <th class="text-center">Name</th>
-          <th class="text-center">Introduction</th>
+          <th class="text-center">DATA</th>
+          <th class="text-center">CREATED_AT</th>
+          <th class="text-center">UPDATED_AT</th>
           <th class="text-center">Actions</th>
         </tr>
       </thead>
@@ -28,8 +29,9 @@
       @foreach ($projects as $project)
       <tr>
         <td class="text-center">{{ $project->id }}</td>
-        <td class="text-center">{{ $project->name }}</td>
-        <td class="text-center">{{ $project->introduction }}</td>
+        <td class="text-center">{{ $project->data }}</td>
+        <td class="text-center">{{ $project->created_at }}</td>
+        <td class="text-center">{{ $project->updated_at }}</td>
         <td>
           <a href="{{ route('projects.edit', $project->id) }}">
             <button>UPDATE</button>

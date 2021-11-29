@@ -13,7 +13,6 @@ class Project extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
-        'introduction',
+        'data',
     ];
 }

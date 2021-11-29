@@ -35,12 +35,9 @@ class ProjectController extends Controller
     */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'introduction' => 'required',
-        ]);
-
-        Project::create($request->all());
+        $data = $request->only('name','introduction');
+        $test['data'] = json_encode($data);
+        Project::create($test);
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');
     }
 
