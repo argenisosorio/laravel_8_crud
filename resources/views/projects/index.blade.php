@@ -21,6 +21,7 @@
           <th class="text-center">ID</th>
           <th class="text-center">Name</th>
           <th class="text-center">Introduction</th>
+          <th class="text-center">Meta</th>
           <th class="text-center">Actions</th>
         </tr>
       </thead>
@@ -30,6 +31,7 @@
         <td class="text-center">{{ $project->id }}</td>
         <td class="text-center">{{ $project->name }}</td>
         <td class="text-center">{{ $project->introduction }}</td>
+        <td class="text-center">{{ $project->meta }}</td>
         <td>
           <a href="{{ route('projects.edit', $project->id) }}">
             <button>UPDATE</button>

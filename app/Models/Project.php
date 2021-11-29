@@ -15,5 +15,10 @@ class Project extends Model
     protected $fillable = [
         'name',
         'introduction',
+        'meta'
+    ];
+
+    protected $casts = [
+        'model' => 'array'
     ];
 }
