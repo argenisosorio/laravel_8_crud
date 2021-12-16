@@ -40,7 +40,14 @@ class ProjectController extends Controller
             'introduction' => 'required',
         ]);
 
-        Project::create($request->all());
+        $project = Project::updateOrCreate(
+        [
+            'name' =>  request('name')
+        ],
+        [
+            'introduction' => request('introduction')
+        ]
+        );
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');
     }
 
