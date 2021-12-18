@@ -35,19 +35,13 @@ class ProjectController extends Controller
     */
     public function store(Request $request)
     {
-        /*
-        $data = ([
-            'x' => 'xxx',
-            'y' => 'yyy',
-        ]);
-        */
-        $data = $request->only('name','introduction');
-        $test = json_encode($data);
+        $data_meta = $request->only('member_name','member_dni');
+        $meta = json_encode($data_meta);
         Project::create(
             [
                 'name' => $request->name,
                 'introduction' => $request->introduction,
-                'meta' => $test,
+                'meta' => $meta,
             ]
         );
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');
@@ -60,7 +54,8 @@ class ProjectController extends Controller
     */
     public function edit(Project $project)
     {
-        return view('projects.edit', compact('project'));
+        $meta = json_decode($project->meta);
+        return view('projects.edit', compact('project', 'meta'));
     }
 
     /*
@@ -73,9 +68,18 @@ class ProjectController extends Controller
         $request->validate([
             'name' => 'required',
             'introduction' => 'required',
+            'member_name' => 'required',
+            'member_dni' => 'required',
         ]);
-        $project->update($request->all());
-
+        $data_meta = $request->only('member_name','member_dni');
+        $meta = json_encode($data_meta);
+        $data = Project::find($project);
+        foreach ($data as $data_request) {
+            $data_request->name = $request->name;
+            $data_request->introduction = $request->introduction;
+            $data_request->meta = $meta;
+            $data_request->save();
+        }
         return redirect()->route('projects.index')->with('success', 'Project updated successfully');
     }
 

@@ -19,6 +19,6 @@ class Project extends Model
     ];
 
     protected $casts = [
-        'model' => 'array'
+        'meta' => 'array'
     ];
 }

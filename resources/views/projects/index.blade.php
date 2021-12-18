@@ -21,7 +21,7 @@
           <th class="text-center">ID</th>
           <th class="text-center">Name</th>
           <th class="text-center">Introduction</th>
-          <th class="text-center">Meta</th>
+          <th class="text-center">Members</th>
           <th class="text-center">Actions</th>
         </tr>
       </thead>

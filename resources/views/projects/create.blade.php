@@ -16,13 +16,25 @@
     @endif
     <form action="{{ route('projects.store') }}" method="POST">@csrf
       <div>
-        <label>Name</label>
+        <label>Name:</label>
         <input type="text" name="name">
       </div>
+      <br>
       <div>
-        <label>Introduction</label>
+        <label>Introduction:</label>
         <input type="text" name="introduction">
       </div>
+      <br>
+      <div>
+        <label>Members:</label>
+        <br>
+        Name
+        <input type="text" name="member_name">
+        <br>
+        DNI
+        <input type="text" name="member_dni">
+      </div>
+      <br>
       <button type="submit" >SAVE</button>
     </form>
   </body>

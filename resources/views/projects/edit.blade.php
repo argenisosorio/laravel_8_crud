@@ -16,14 +16,27 @@
     @endif
     <form action="{{ route('projects.update', $project->id) }}" method="POST"> @csrf @method('PUT')
       <div>
-        <label>Name</label>
+        <label>Name:</label>
         <input type="text" name="name" value="{{ $project->name }}">
       </div>
+      <br>
       <div>
-        <label>Introduction</label>
+        <label>Introduction:</label>
         <input type="text" name="introduction" value="{{ $project->introduction }}">
       </div>
+      <br>
+      <div>
+        <label>Members:</label>
+        <br>
+        Name
+        <input type="text" name="member_name" value="{{ $meta->member_name }}">
+        <br>
+        DNI
+        <input type="text" name="member_dni" value="{{ $meta->member_dni }}">
+      </div>
+      <br>
       <button type="submit" >SAVE</button>
+      <br>
     </form>
   </body>
 </html>
