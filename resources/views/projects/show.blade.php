@@ -14,6 +14,9 @@
       Introduction: {{ $project->introduction }}
     </p>
     <p>
+      Members: {{ $project->meta }}
+    </p>
+    <p>
       Created at: {{ $project->created_at }}
     </p>
   </body>
