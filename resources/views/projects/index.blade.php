@@ -9,7 +9,14 @@
     @if(Session::has('success'))
       Message: {{ Session::get('success') }}
     @endif
-    <h1>List of projects</h1>
+    <h1>
+      {{ __('mesagges.welcome') }}
+      <br>
+      @lang('mesagges.welcome')
+      <br>
+      {{ trans('mesagges.welcome') }}
+    </h1>
+    <h2>List of projects</h2>
     <a href="{{ route('projects.create') }}">
       <button>NEW</button>
     </a>
