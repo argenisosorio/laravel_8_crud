@@ -14,7 +14,7 @@
         @endforeach
       </ul>
     @endif
-    <form action="{{ route('projects.store') }}" method="POST">@csrf
+    <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">@csrf
       <div>
         <label>Name</label>
         <input type="text" name="name">
@@ -23,7 +23,11 @@
         <label>Introduction</label>
         <input type="text" name="introduction">
       </div>
-      <button type="submit" >SAVE</button>
+      <div>
+        <label>Document</label>
+        <input type="file" name="document" />
+      </div>
+      <button type="submit">SAVE</button>
     </form>
   </body>
 </html>

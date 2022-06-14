@@ -38,9 +38,17 @@ class ProjectController extends Controller
         $request->validate([
             'name' => 'required',
             'introduction' => 'required',
+            'document' => 'required',
+            // 'document' => 'mimes:jpeg,gif,bmp,png'
         ]);
 
-        Project::create($request->all());
+        $file_path = $request->file('document')->store('public/projects');
+        Project::create([
+            'name' => request('name'),
+            'introduction' => request('introduction'),
+            'document' => $file_path
+        ]);
+
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');
     }
 

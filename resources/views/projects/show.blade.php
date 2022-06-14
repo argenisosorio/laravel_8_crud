@@ -14,6 +14,9 @@
       Introduction: {{ $project->introduction }}
     </p>
     <p>
+      Document: {{ $project->document }}
+    </p>
+    <p>
       Created at: {{ $project->created_at }}
     </p>
   </body>
