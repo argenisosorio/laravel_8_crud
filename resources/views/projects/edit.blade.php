@@ -14,7 +14,7 @@
         @endforeach
       </ul>
     @endif
-    <form action="{{ route('projects.update', $project->id) }}" method="POST"> @csrf @method('PUT')
+    <form action="{{ route('projects.update', $project->id) }}" method="POST" enctype="multipart/form-data"> @csrf @method('PUT')
       <div>
         <label>Name</label>
         <input type="text" name="name" value="{{ $project->name }}">
@@ -22,6 +22,11 @@
       <div>
         <label>Introduction</label>
         <input type="text" name="introduction" value="{{ $project->introduction }}">
+      </div>
+      <div>
+        <label>Document</label>
+        <br>
+        <input type="file" name="document" value="{{ $project->document }}">
       </div>
       <button type="submit" >SAVE</button>
     </form>

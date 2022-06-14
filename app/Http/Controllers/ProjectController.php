@@ -72,8 +72,15 @@ class ProjectController extends Controller
         $request->validate([
             'name' => 'required',
             'introduction' => 'required',
+            'document' => 'required',
         ]);
-        $project->update($request->all());
+
+        $file_path = $request->file('document')->store('public/projects');
+        $project->update([
+            'name' => request('name'),
+            'introduction' => request('introduction'),
+            'document' => $file_path
+        ]);
 
         return redirect()->route('projects.index')->with('success', 'Project updated successfully');
     }
