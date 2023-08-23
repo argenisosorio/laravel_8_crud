@@ -6,6 +6,13 @@
     <title>Create student</title>
   </head>
   <body>
+    <a href="{{ route('courses.index') }}">
+      <button>Courses</button>
+    </a>
+    <a href="{{ route('students.index') }}">
+      <button>Students</button>
+    </a>
+    <br>
     <h1>Create student</h1>
     @if(count($errors))
       <ul>
@@ -19,6 +26,15 @@
         <label>Name</label>
         <input type="text" name="name">
       </div>
+      <br>
+      <div>
+        <select name="selected_courses[]">
+          @foreach ($courses as $course)
+            <option value="{{ $course->id }}">{{ $course->name }}</option>
+          @endforeach
+        </select>
+      </div>
+      <br>
       <button type="submit" >SAVE</button>
     </form>
   </body>

@@ -6,6 +6,13 @@
     <title>Update course</title>
   </head>
   <body>
+    <a href="{{ route('courses.index') }}">
+      <button>Courses</button>
+    </a>
+    <a href="{{ route('students.index') }}">
+      <button>Students</button>
+    </a>
+    <br>
     <h1>Update course</h1>
     @if(count($errors))
       <ul>

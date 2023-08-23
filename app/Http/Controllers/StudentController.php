@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -25,7 +26,10 @@ class StudentController extends Controller
     */
     public function create()
     {
-        return view('students.create');
+        //return view('students.create');
+        $courses = Course::all(); // Obtén la lista de cursos
+
+        return view('students.create', compact('courses'));
     }
 
     /*
@@ -37,9 +41,15 @@ class StudentController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'selected_courses' => 'array',
         ]);
 
-        Student::create($request->all());
+        $student = Student::create($request->all());
+
+        // Relacionar el estudiante con los cursos seleccionados
+        if ($request->has('selected_courses')) {
+            $student->courses()->attach($request->input('selected_courses'));
+        }
 
         return redirect()->route('students.index')->with('success', 'Student created successfully.');
     }
@@ -49,10 +59,14 @@ class StudentController extends Controller
     | EDIT
     |--------------------------------------------------------------------------
     */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        return view('students.edit', compact('student'));
+        $student = Student::find($id);
+        $courses = Course::all(); // Obtén la lista de cursos
+
+        return view('students.edit', compact('student', 'courses'));
     }
+
 
     /*
     |--------------------------------------------------------------------------
@@ -63,9 +77,13 @@ class StudentController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'selected_courses' => 'array',
         ]);
 
         $student->update($request->all());
+
+        // Sincronizar los cursos relacionados con los cursos seleccionados
+        $student->courses()->sync($request->input('selected_courses'));
 
         return redirect()->route('students.index')->with('success', 'Student updated successfully');
     }
