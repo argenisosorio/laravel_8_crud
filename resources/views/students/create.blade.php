@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Update project</title>
+    <title>Create student</title>
   </head>
   <body>
-    <h1>Update project</h1>
+    <h1>Create student</h1>
     @if(count($errors))
       <ul>
         @foreach($errors->all() as $error)
@@ -14,14 +14,10 @@
         @endforeach
       </ul>
     @endif
-    <form action="{{ route('projects.update', $project->id) }}" method="POST"> @csrf @method('PUT')
+    <form action="{{ route('students.store') }}" method="POST">@csrf
       <div>
         <label>Name</label>
-        <input type="text" name="name" value="{{ $project->name }}">
-      </div>
-      <div>
-        <label>Introduction</label>
-        <input type="text" name="introduction" value="{{ $project->introduction }}">
+        <input type="text" name="name">
       </div>
       <button type="submit" >SAVE</button>
     </form>

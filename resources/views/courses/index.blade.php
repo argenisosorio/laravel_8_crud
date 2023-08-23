@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>List of projects</title>
+    <title>List of courses</title>
   </head>
   <body>
     @if(Session::has('success'))
       Message: {{ Session::get('success') }}
     @endif
-    <h1>List of projects</h1>
-    <a href="{{ route('projects.create') }}">
+    <h1>List of courses</h1>
+    <a href="{{ route('courses.create') }}">
       <button>NEW</button>
     </a>
     <br />
@@ -20,24 +20,22 @@
         <tr>
           <th class="text-center">ID</th>
           <th class="text-center">Name</th>
-          <th class="text-center">Introduction</th>
           <th class="text-center">Actions</th>
         </tr>
       </thead>
       <tbody>
-      @foreach ($projects as $project)
+      @foreach ($courses as $course)
       <tr>
-        <td class="text-center">{{ $project->id }}</td>
-        <td class="text-center">{{ $project->name }}</td>
-        <td class="text-center">{{ $project->introduction }}</td>
+        <td class="text-center">{{ $course->id }}</td>
+        <td class="text-center">{{ $course->name }}</td>
         <td>
-          <a href="{{ route('projects.edit', $project->id) }}">
+          <a href="{{ route('courses.edit', $course->id) }}">
             <button>UPDATE</button>
           </a>
-          <a href="{{ route('projects.show', $project->id) }}">
+          <a href="{{ route('courses.show', $course->id) }}">
             <button>SHOW</button>
           </a>
-          <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
+          <form action="{{ route('courses.destroy', $course->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit" onclick="return confirm('Are you sure you want to delete the record? ');">DELETE</button>

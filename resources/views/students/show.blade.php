@@ -3,18 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Show project</title>
+    <title>Show students</title>
   </head>
   <body>
-    <h1>Show project</h1>
+    <h1>Show students</h1>
     <p>
-      Name: {{ $project->name }}
+      Name: {{ $student->name }}
     </p>
     <p>
-      Introduction: {{ $project->introduction }}
-    </p>
-    <p>
-      Created at: {{ $project->created_at }}
+      Created at: {{ $student->created_at }}
     </p>
   </body>
 </html>

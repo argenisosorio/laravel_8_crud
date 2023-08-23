@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class CourseController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -14,8 +14,8 @@ class ProjectController extends Controller
     */
     public function index()
     {
-        $projects = Project::get();
-        return view('projects.index', compact('projects'));
+        $courses = Course::get();
+        return view('courses.index', compact('courses'));
     }
 
     /*
@@ -25,7 +25,7 @@ class ProjectController extends Controller
     */
     public function create()
     {
-        return view('projects.create');
+        return view('courses.create');
     }
 
     /*
@@ -37,11 +37,11 @@ class ProjectController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'introduction' => 'required',
         ]);
 
-        Project::create($request->all());
-        return redirect()->route('projects.index')->with('success', 'Project created successfully.');
+        Course::create($request->all());
+
+        return redirect()->route('courses.index')->with('success', 'Course created successfully.');
     }
 
     /*
@@ -49,9 +49,9 @@ class ProjectController extends Controller
     | EDIT
     |--------------------------------------------------------------------------
     */
-    public function edit(Project $project)
+    public function edit(Course $course)
     {
-        return view('projects.edit', compact('project'));
+        return view('courses.edit', compact('course'));
     }
 
     /*
@@ -59,15 +59,14 @@ class ProjectController extends Controller
     | UPDATE
     |--------------------------------------------------------------------------
     */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, Course $course)
     {
         $request->validate([
             'name' => 'required',
-            'introduction' => 'required',
         ]);
-        $project->update($request->all());
+        $course->update($request->all());
 
-        return redirect()->route('projects.index')->with('success', 'Project updated successfully');
+        return redirect()->route('courses.index')->with('success', 'Course updated successfully');
     }
 
     /*
@@ -75,9 +74,9 @@ class ProjectController extends Controller
     | SHOW
     |--------------------------------------------------------------------------
     */
-    public function show(Project $project)
+    public function show(Course $course)
     {
-        return view('projects.show', compact('project'));
+        return view('courses.show', compact('course'));
     }
 
     /*
@@ -85,9 +84,10 @@ class ProjectController extends Controller
     | DELETE
     |--------------------------------------------------------------------------
     */
-    public function destroy(Project $project)
+    public function destroy(Course $course)
     {
-        $project->delete();
-        return redirect()->route('projects.index')->with('success', 'Project deleted successfully');
+        $course->delete();
+
+        return redirect()->route('courses.index')->with('success', 'Course deleted successfully');
     }
 }
