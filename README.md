@@ -4,6 +4,8 @@ Base on: <a href="https://github.com/Kingsconsult/laravel_8_crud">https://github
 
 ## Requirements
 ```
+PHP 7.4
+$ sudo apt install php7.4 php7.4-gd php7.4-mysql libapache2-mod-php7.4 php-zip php7.4-mbstring php7.4-xml php7.4-intl php-symfony-intl php7.4-pgsql
 Laravel Framework 8.0.0
 ```
 <b>Note:</b>
